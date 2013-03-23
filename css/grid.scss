@@ -1,0 +1,51 @@
+%clearfix {
+    zoom: 1;
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+$containerMaxWidth:     960px; // set this to the maximum width you want .container to have
+$gutter:				floor(($containerMaxWidth/48)/($containerMaxWidth - ($containerMaxWidth/48))); // 20px at 960px wide container, accounting for a 1/2 gutter width padding on the left and right of the container
+$onecol:                percentage(($containerMaxWidth/16)/($containerMaxWidth - ($containerMaxWidth/48))); // 60px at 960px wide container
+
+@mixin columns($selector, $count:1, $offset:0, $property:0) {
+	#{$selector} {
+		@if $count == 'row' {
+			@extend %clearfix;
+		} @else if $count == 'container' {
+			max-width: ($containerMaxWidth - $gutter);
+			padding: 0 percentage($gutter)/2;
+			margin: 0 auto;
+			@extend %clearfix;		
+		} @else {
+			float: left;
+			width: ($onecol * $count) + (percentage($gutter) * ($count - 1));
+
+			@if $property == first {
+				@if $offset > 0 {
+					margin-left: ($onecol * $offset) + (percentage($gutter) * $offset);
+				} @else {
+					margin-left: 0;
+				}
+			} @else {
+				@if $offset > 0 {
+					margin-left: ($onecol * $offset) + (percentage($gutter) * ($offset + 1));
+					&:first-child {
+						margin-left: ($onecol * $offset) + (percentage($gutter) * $offset);
+					}
+				} @else {
+					margin: 0 0 0 percentage($gutter);
+					&:first-child {
+						margin-left: 0;
+					}
+				}
+			} 
+		}
+	}
+}

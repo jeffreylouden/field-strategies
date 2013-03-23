@@ -1,0 +1,11 @@
+auto:           true
+url:        	"http://fieldstrategies.com/"
+permalink:      ":title/"
+exclude:        ["README.md", "CNAME"]
+owner-name:     "Field Strategies"
+owner-page:     "http://fieldstrategies.com/"
+owner-email:    "hello@fieldstrategies.com"
+name:           "Field Strategies"
+license:        "Creative Commons Attribution-Share Alike 3.0 United States License."
+domain:         localhost
+port:           4000

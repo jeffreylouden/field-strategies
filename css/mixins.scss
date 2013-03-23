@@ -1,0 +1,43 @@
+// Placeholder variables
+%ir {
+	display: block;
+	text-indent: 110%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+// Mixins
+@mixin respond-to($val, $query:min-width) {
+	@if $query == retina {
+		@media only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (min--moz-device-pixel-ratio: 2),
+		only screen and (-o-min-device-pixel-ratio: 2/1),
+		only screen and (min-device-pixel-ratio: 2),
+		only screen and (min-resolution: 192dpi),
+		only screen and (min-resolution: 2dppx) {
+			@content;
+		}
+	}
+	@else {
+		@media ($query: $val) {
+			@content;
+		}
+	}
+}
+
+@mixin retina($image_name, $w: auto, $h: auto, $extension: '.png') {
+  background-image: url($image_name + $extension);
+  $x2img : $image_name + '@2x' + $extension;
+	@include respond-to($query: retina, $val: '1.5') {
+	    background-image: url($x2img);
+	    background-size: $w $h;
+	  }
+}
+
+@mixin prefix($property, $val) {
+	-webkit-#{$property}: #{$val};
+	   -moz-#{$property}: #{$val};
+	    -ms-#{$property}: #{$val};
+	     -o-#{$property}: #{$val};
+	        #{$property}: #{$val};
+}

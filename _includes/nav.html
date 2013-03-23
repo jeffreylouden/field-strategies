@@ -1,0 +1,8 @@
+<nav role="navigation">
+	<ul>
+		{% for post in site.posts %}
+		<li><a href="#{{ post.slug }}" title="{{ post.title }}" data-state="{{ post.slug }}">{{ post.navtitle }}</a></li>
+		{% endfor %}
+		<li><a href="#contact" title="Contact" data-state="contact">Contact</a></li>
+	</ul>
+</nav>

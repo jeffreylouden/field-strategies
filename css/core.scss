@@ -1,0 +1,583 @@
+@import 'reset';
+@import 'grid';
+@import 'mixins';
+@import 'variables';
+@import 'font-awesome';
+
+$desktopBreakpoint: '40em';
+
+$body: "jaf-facitweb", Helvetica, sans-serif;
+$museo: "museo-slab", Georgia, serif;
+
+$background: gray;
+$body-color: black;
+$blue: #021e4d;
+
+@include columns($selector:'.content, nav ul, #intro, #colophon', $count:'container');
+@include columns($selector:'article, footer', $count:'row');
+
+strong {
+	font-weight: bold;
+}
+
+img {
+	max-width: 100%;
+}
+
+body {
+	font-family: $body;
+	line-height: 1.4;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-webkit-text-size-adjust: none;
+	padding-top: 50px;
+	@include respond-to($val: $desktopBreakpoint) {
+		padding-top:0;
+	}
+
+}
+
+a {
+	text-decoration: none;
+	color: $body-color;
+}
+
+h1,
+h2 {
+	text-align: center;
+	p {
+		font-family: $body;
+	}
+}
+
+h1,
+h2,
+h3 {
+	font-family: $museo;
+	font-weight: 800;
+	font-size: 1.6rem;
+	line-height: 1.4;
+	@include respond-to($val: $desktopBreakpoint) {
+		font-size: 2rem;
+		line-height:2;
+	}
+}
+
+li {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+header {
+	padding: 2%;
+	@include respond-to($val: $desktopBreakpoint) {
+		padding: 0;
+	}
+}
+
+nav {
+	background: white;
+	font-size: 1.4rem;
+	font-family: $museo;
+	font-weight: 800;
+	text-transform: uppercase;
+	position: fixed;
+	width: 200px;
+	left: -210px;
+	top: 0;
+	bottom: 0;
+	z-index: 999;
+	box-shadow: 0 0 10px rgba(0,0,0,0.7);
+
+	@include prefix(transition, 'left 0.4s cubic-bezier(0.7, 0, 0.3, 1)');
+	
+	&.show {
+		left: 0;
+	}
+	a {
+		display: block;
+	}
+
+	@include respond-to($val: $desktopBreakpoint) {
+		font-size: 0.8rem;
+		font-family: $body;
+		font-weight: normal;
+		left: 0;
+		right: 0;
+		bottom: initial;
+		box-shadow: none;
+		border-bottom: 1px solid rgba($body-color, 0.2);
+		padding: 5px 0;
+		width: 100%;
+		& + header {
+			padding-top: 49px;
+		}
+	}
+	ul {
+		@include respond-to($val: $desktopBreakpoint) {
+			text-align: center;
+			padding: 10px 0;
+		}
+		li {
+			padding: 4%;
+			border-bottom: 1px solid rgba($body-color, 0.1);
+			@include respond-to($val: $desktopBreakpoint) {
+				border-bottom: none;
+				display: inline-block;
+				padding: 0 10px;
+				&:first-child {
+					padding-left: 0;
+				}
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}
+
+#mobile-nav {
+	height: 50px;
+	border-bottom: 1px solid rgba($body-color, 0.2);
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	z-index: 998;
+	background: $blue;
+	color: white;
+	display: block;
+	overflow: hidden;
+	line-height: 60px;
+	padding: 0 2%;
+
+	@include prefix(transition, 'top 500ms ease');
+
+	i {
+		font-size: 2.4rem;
+		text-align: center;
+		display: block;
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		cursor: pointer;
+	}
+	@include respond-to($val: $desktopBreakpoint) {
+		top: -65px;
+	}
+}
+
+h1 {
+	color: white;
+	background: $background;
+	text-align: center;
+	text-transform: uppercase;
+	display:none;
+	@include respond-to($val: $desktopBreakpoint) {
+		display: block;
+		padding: 200px 0;
+	}
+}
+
+
+#intro {
+	p {
+		margin: 4% 0;
+	}
+	@include respond-to($val: $desktopBreakpoint) {
+		padding: 90px 0;
+		p {
+			line-height: 2;
+		}
+	}
+}
+
+#main {
+
+}
+
+article {
+	padding: 40px 2%;
+	h3 {
+		position: relative;
+		text-align: center;
+		@include respond-to($val: $desktopBreakpoint) {
+			padding-bottom: 40px;
+			text-align: left;
+			&:after {
+				position: absolute;
+				content: '';
+				left:0;
+				bottom: 35%;
+				height: 5px;
+				width: 60px;
+				display: block;
+				background: $body-color;
+			}
+		}
+	}
+}
+
+#meet-the-team,
+#services,
+#clients {
+	background: $background;
+	h3 {
+		color: white;
+		text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+		&:after {
+			background: white;
+		}
+	}
+	@include respond-to($val: $desktopBreakpoint) {
+		background-attachment: fixed;
+	}
+}
+
+#testimonials {
+	h3 {
+		display: none;
+	}
+	blockquote {
+		text-align: center;
+		font-style: italic;
+		font-size: 1.3rem;
+		line-height: 1.6;
+		@include respond-to($val: $desktopBreakpoint) {
+			max-width: 80%;
+			margin: 0 auto;
+		}
+		cite {
+			font-style: normal;
+			display: block;
+			margin: 4% 0;
+			font-size: 1.4rem;
+			font-family: $museo;
+			font-weight: 800;
+		}
+	}
+
+	ol {
+		text-align: center;
+		overflow: hidden;
+		li {
+			text-transform: uppercase;
+			font-size: 0.6rem;
+			font-family: $museo;
+			font-weight: 800;
+			@include respond-to($val: $desktopBreakpoint) {
+				border: 2px solid $body-color;
+				padding: 1%;
+				display: inline-block;
+				&:first-child {
+					border-right: 0;
+				}
+				&:last-child {
+					border-left: 0;
+				}
+			}
+		}
+	}
+}
+
+#meet-the-team {
+	ul {
+		li {
+			background: white;
+			padding: 4%;
+			margin: 0 0 4%;
+			text-align: center;
+			overflow: hidden;
+			position: relative;
+			@include respond-to($val: $desktopBreakpoint) {
+				margin: 0 2% 4%;
+				float: left;
+				width: 30.666666667%;
+				height: 360px;
+				&:first-child,
+				&:nth-child(3n) {
+					margin-left: 0;
+				}
+				&:last-child,
+				&:nth-child(3n+2) {
+					margin-right: 0;
+				}
+				&.intro {
+					width: 65%;
+					display: table;
+					font-family: $museo;
+					font-weight: 800;
+					font-size: 1.8rem;
+					p {
+						display: table-cell;
+						vertical-align: middle;
+					}
+				}		
+				.info,
+				.team-image {
+					@include prefix(transition, 'top 300ms ease');
+				}
+
+				.bio {
+					max-height: 0;
+					@include prefix(transition, 'max-height 300ms ease');
+				}
+
+				.social {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					height: 60px;
+					background: white;
+					text-align: center;
+					li {
+						font-size: 1.3rem;
+						display: inline-block;
+						line-height: 30px;
+						float: none;
+						width: auto;
+						height: auto;
+						margin: 0;
+					}
+				}
+
+				&:hover {
+					.team-image {
+						top: -200px;
+					}
+					.info {
+						top: -200px;
+					}
+					.bio {
+						max-height: 20em;
+					}
+				}
+			}
+			.team-image {
+				position: relative;
+				border-radius: 50%;
+				margin: 0 auto 40px;
+				width: 160px;
+				height: 160px;
+				overflow: hidden;
+			}
+			.info {
+				overflow: hidden;
+				position: relative;
+				h4 {
+					text-transform: uppercase;
+					font-weight: bold;
+				}
+				h5 {
+					font-family: $museo;
+					font-weight: 800;
+					font-size: 0.8rem;
+					font-style: italic;
+					margin-bottom: 2%;
+				}
+			}
+			.bio {
+				text-align: left;
+				font-size: 0.9rem;
+				line-height: 1.6;
+			}
+		}
+	}
+}
+
+#services {
+	ul {
+		li {
+			position: relative;
+			background: white;
+			padding-left: 2%;
+			overflow: hidden;
+			min-height: 200px;
+			margin-bottom: 4%;
+			p {
+				margin-bottom: 2%;
+			}
+			h4 {
+				font-weight: bold;
+				position: relative;
+				margin: 2% 0;
+				time {
+					display: block;
+				}
+			}
+			h5 {
+				font-family: $museo;
+				font-weight: 800;
+				margin-bottom: 2%;
+			}
+			img {
+				display: block;
+				margin: 2% auto;
+			}
+
+			@include respond-to($val: $desktopBreakpoint) {
+				img {
+					float: right;
+					max-width: 200px;
+					height: auto;
+					margin: 0;
+				}
+				h4 {
+					time {
+						float: right;
+						margin-right: 2%;
+					}
+				}
+			}
+		}
+	}
+}
+
+#full-list {
+	ul {
+		li {
+			line-height: 2;
+		}
+	}
+	h5 {
+		font-family: $museo;
+		font-weight: 800;
+		font-size: 1.6rem;
+		border-bottom: 2px solid $body-color;
+		padding-bottom: 4%;
+		margin-bottom: 4%;
+	}
+	@include respond-to($val: $desktopBreakpoint) {
+		ul {
+			float: left;
+			width: 30.666666667%;
+			margin-right: 4%;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+#clients {
+	.intro,
+	#client-list,
+	#state-orgs,
+	#ground-game {
+		background: white;
+		padding: 4%;
+		margin-bottom: 4%;
+		overflow: hidden;
+	}
+
+	#client-list {
+		text-align: center;
+		img {
+			margin: 2% auto;
+		}
+		h4 {
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+		h5 {
+			font-family: $museo;
+			font-weight: 800;
+			font-size: 0.8rem;
+			font-style: italic;
+			margin-bottom: 2%;
+		}
+	}
+
+	@include respond-to($val: $desktopBreakpoint) {
+		#client-list {
+			li {
+				float: left;
+				width: 30.666666667%;
+				margin: 0 4% 4% 0;
+				&:nth-child(3n), {
+					margin-right: 0;
+				}
+			}
+		}
+		h5 {
+			font-size: 1.4rem;
+			font-weight: bold;
+			line-height: 1.6;
+			clear: both;
+			width: 50%;
+			box-sizing: border-box;
+			text-align: center;
+			margin-top: 2%;
+		}
+		#state-orgs,
+		#ground-game {
+			ul {
+				width: 50%;
+				li {
+					line-height: 2;
+				}
+			}
+		}
+
+		#state-orgs {
+			ul {
+				float: right;
+			}
+			h5 {
+				float: left;
+			}
+		}
+		#ground-game {
+			ul {
+				float: left;
+			}
+			h5 {
+				float: right;
+			}
+		}
+	}
+}
+
+footer {
+	#colophon {
+		overflow: hidden;
+		padding: 4% 2%;
+		@include respond-to($val: $desktopBreakpoint) {
+			li {
+				float: left;
+				width: 48%;
+				&:first-child {
+					margin-right: 4%;
+				}
+			}
+		}
+		h3 {
+			font-size: 1.6rem;
+			border-bottom: 2px solid $body-color;
+			margin-bottom: 4%;
+		}
+	}
+
+	#legal {
+		padding: 20px;
+		font-size: 0.7rem;
+		text-align: center;
+		position: relative;
+		border-top: 1px solid $body-color;
+		i {
+			display: block;
+		}
+		@include respond-to($val: $desktopBreakpoint) {
+			i {
+				text-align: right;
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+		}
+	}
+}
+
+@import 'print';
