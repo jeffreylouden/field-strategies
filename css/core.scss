@@ -151,6 +151,7 @@ nav {
 	overflow: hidden;
 	line-height: 60px;
 	padding: 0 2%;
+	cursor: pointer;
 
 	@include prefix(transition, 'top 500ms ease');
 
@@ -161,7 +162,6 @@ nav {
 		position: absolute;
 		top: 8px;
 		right: 8px;
-		cursor: pointer;
 	}
 	@include respond-to($val: $desktopBreakpoint) {
 		top: -65px;
@@ -222,7 +222,9 @@ article {
 #meet-the-team,
 #services,
 #clients {
-	background: $background;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
 	h3 {
 		color: white;
 		text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
@@ -238,6 +240,28 @@ article {
 #testimonials {
 	h3 {
 		display: none;
+	}
+	ul {
+		position: relative;
+        min-height: 240px;
+		li {
+			@include respond-to($val: $desktopBreakpoint) {
+				position: absolute;
+	            top: 0;
+	            opacity: 0;
+	            display: block;
+
+	            @include prefix(transition, 'opacity 1s ease');
+	            
+	            &.current {
+	                opacity: 1;
+	            }
+
+	            &.past {
+	                opacity: 0;
+	            }
+	        }
+		}
 	}
 	blockquote {
 		text-align: center;
@@ -262,19 +286,23 @@ article {
 		text-align: center;
 		overflow: hidden;
 		li {
+			position: relative;
 			text-transform: uppercase;
 			font-size: 0.6rem;
 			font-family: $museo;
 			font-weight: 800;
+			opacity: 1;
+			min-height: auto;
+			
 			@include respond-to($val: $desktopBreakpoint) {
-				border: 2px solid $body-color;
+				border-top: 2px solid $body-color;
+				border-bottom: 2px solid $body-color;
+				border-left: 2px solid $body-color;
 				padding: 1%;
 				display: inline-block;
-				&:first-child {
-					border-right: 0;
-				}
+
 				&:last-child {
-					border-left: 0;
+					border-right: 2px solid $body-color;
 				}
 			}
 		}
@@ -282,6 +310,7 @@ article {
 }
 
 #meet-the-team {
+	background-image: url('http://upload.wikimedia.org/wikipedia/commons/e/e9/Official_portrait_of_Barack_Obama.jpg');
 	ul {
 		li {
 			background: white;
@@ -388,6 +417,7 @@ article {
 }
 
 #services {
+	background-image: url('http://www.barack-obama-bio.com/images/political/barack-obama-17.jpg');
 	ul {
 		li {
 			position: relative;
@@ -462,6 +492,7 @@ article {
 }
 
 #clients {
+	background-image: url('http://blog.zap2it.com/pop2it/barack-obama-wins-2012-election.jpg');
 	.intro,
 	#client-list,
 	#state-orgs,
@@ -509,7 +540,6 @@ article {
 			width: 50%;
 			box-sizing: border-box;
 			text-align: center;
-			margin-top: 2%;
 		}
 		#state-orgs,
 		#ground-game {
