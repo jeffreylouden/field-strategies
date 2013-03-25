@@ -12,6 +12,7 @@
         PREV            =   'previous',
         SHOW            =   'show',
 
+        wndw            =   $(win),
         html            =   $('html'),
         htmlbody        =   html.add('body'),
         nav             =   $('nav'),
@@ -27,6 +28,8 @@
 
         main            =   $(doc.getElementById('main')),
         sections        =   main.find('article'),
+        winHeight,
+        viewportHeight,
         scrollDistance,
         currentSection,
 
@@ -95,53 +98,56 @@
             var
                 t               =   $(this),
                 sectionId       =   t.attr(ID);
-            if ( (scrollPosition >= t.attr(OFFSETTOP)) && ( scrollPosition < t.attr(OFFSETBOTTOM)) && ( sectionId !== currentSection) ) {
 
-                if (!navLogo.hasClass(SHOW)) {
-                    navLogo.addClass(SHOW);
-                }
-
-                currentSection = sectionId;
-
-                switch (currentSection) {
+                switch (sectionId) {
                     case 'testimonials':
-                        currentSection = 'clients';
+                        sectionId = 'clients';
                         break;
                     case 'full-list':
-                        currentSection = 'services';
+                        sectionId = 'services';
                         break;
                 }
-
+            if ( contact.attr(OFFSETTOP) <= viewportHeight ) {
+                currentSection = 'contact';
                 nav.find('.active').removeClass(ACTIVE);
-                $(nav.find('[href=#' + currentSection + ']').closest('li')).addClass(ACTIVE);
-
+                $(nav.find('[href=#contact]').closest('li')).addClass(ACTIVE);
             } else {
-                if ( scrollPosition <= header.attr(OFFSETBOTTOM)) {
+                if ( (scrollPosition >= parseInt(t.attr(OFFSETTOP) - 56, 10) ) && ( scrollPosition < parseInt(t.attr(OFFSETBOTTOM), 10) ) && ( currentSection !== sectionId ) ) {
+
+                    currentSection = sectionId;
+
+                    if (!navLogo.hasClass(SHOW)) {
+                        navLogo.addClass(SHOW);
+                    }
+
+                    nav.find('.active').removeClass(ACTIVE);
+                    $(nav.find('[href=#' + currentSection + ']').closest('li')).addClass(ACTIVE);
+
+                } else {
+                    if ( scrollPosition <= parseInt(header.attr(OFFSETBOTTOM) -56, 10) ) {
                         nav.find('.active').removeClass(ACTIVE);
                         navLogo.removeClass(SHOW);
                         currentSection = '';
-                }
-                if ( scrollPosition >= contact.attr(OFFSETTOP)) {
-                    currentSection = 'contact';
-                    nav.find('.active').removeClass(ACTIVE);
-                    $(nav.find('[href=#contact]').closest('li')).addClass(ACTIVE);
+                    }
                 }
             }
         });
     }
 
     function setSections() {
+
+        winHeight = wndw.height();
+
         sections.each(function() {
             var s                 =   $(this);
-            s.attr(OFFSETTOP, Math.floor(s.offset().top) - 56);
+            s.attr(OFFSETTOP, s.offset().top);
             s.attr(OFFSETBOTTOM, parseInt(s.attr(OFFSETTOP),10) + parseInt(s.outerHeight(true), 10));
         });
 
-        contact.attr(OFFSETTOP, Math.floor(contact.offset().top) - 56);
-        contact.attr(OFFSETBOTTOM, parseInt(contact.attr(OFFSETTOP),10) + parseInt(contact.outerHeight(true), 10));
+        contact.attr(OFFSETTOP, contact.offset().top);
 
-        header.attr(OFFSETTOP, Math.floor(header.offset().top) - 56);
-        header.attr(OFFSETBOTTOM, parseInt(header.attr(OFFSETTOP),10) + parseInt((header.outerHeight(true) + intro.outerHeight(true)), 10));
+        header.attr(OFFSETTOP, 0);
+        header.attr(OFFSETBOTTOM, header.outerHeight(true) + intro.outerHeight(true));
     }
 
     function init() {
@@ -179,19 +185,22 @@
         nav.toggleClass(SHOW);
     });
 
-    $(win).resize(function(){
+    wndw.resize(function(){
         setSections();
+        $(this).scroll();
     });
 
-    $(win).scroll(function(){
+    wndw.scroll(function(){
+        var w  =    $(this);
 
-        scrollDistance  =   $(this).scrollTop();
-        scrollDistance  =   scrollDistance ? scrollDistance : 0;
-
+        scrollDistance  =   w.scrollTop();
+        viewportHeight  =   scrollDistance + winHeight;
         sectionHighlight(scrollDistance);
     });
 
-    init();
+    wndw.on('load', function() {
+        init();
+    });
 
 })(jQuery, window, document);
 
