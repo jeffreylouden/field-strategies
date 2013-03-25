@@ -89,8 +89,6 @@
                 elementDistanceFromTop  =   s.offset().top;
             htmlbody.animate({scrollTop: elementDistanceFromTop - 56}, 600);
         }
-
-        // try { win._gaq.push([TRACKEVENT, ZACH, GASCROLL, target.attr(ID)]); } catch(e) {}
     }
 
     function sectionHighlight( scrollPosition ) {
