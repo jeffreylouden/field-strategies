@@ -1,5 +1,5 @@
 auto:           true
-url:        	"http://fieldstrategies.com/"
+url:        	"http://assets.jefflouden.com/field-strategies/"
 permalink:      ":title/"
 exclude:        ["README.md", "CNAME"]
 owner-name:     "Field Strategies"

@@ -1,5 +1,6 @@
 <nav role="navigation">
 	<ul>
+		<li id="nav-logo"></li>
 		{% for post in site.posts %}
 		<li><a href="#{{ post.slug }}" title="{{ post.title }}" data-state="{{ post.slug }}">{{ post.navtitle }}</a></li>
 		{% endfor %}
