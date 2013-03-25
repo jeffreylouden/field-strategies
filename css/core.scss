@@ -275,6 +275,10 @@ nav {
 		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAAAoCAMAAAD35ofiAAAAM1BMVEUAAAD///////////////////////////////////////////////////////////////+3leKCAAAAEHRSTlMAv4BA799gnzCvzxCPIHBQ6UHZiAAAAnRJREFUeF7t2m2ToyAMAOCE8I5a/v+vvVmETHoK7ay7Xq81H3YgixOecUYECx8XV8w3+zFWshPqnPEDqImUi7nER4AxtzAhZ/RY4t3B6BZKADkjrfi3Bkff2vUO6zcHIwhwSX08GHMNBaDqs41yC+JkiZrFYAXAh5LULpWSHMTjDS5pHVoTUGtxZbx7siqzXqaAB95PShb9XTCHY++sWy6mDZgjFjA9BXZMmzpgWfQkcOZ7PIlcB8zjF/7XAOxFlbkDdqLoSeBQvZLoBmAHwMoxeBHgWwdsxNXfAWtEtH+DIyL6HbDRnGEwmpqbcCUbRL8dj0wEi6hraStmMTVh/SvAclJZFP0GuHnuwSSSEqymLVitbDFINHEDnmTp+yYL98EkJ4IngdW3wbkG/vfgEJ8BpwaOPwIOPwx2Sqn5SXA2t9IZg6mMLJw9sFFKEQuVkl05KQDQa1E68uJB3WVpDA51KM4dsDNt4b59NYot7YDvb6ndgluIomE+GywH2x0wB8FKQWy9MRi5uwWLjrang4EMo7pgbds7Crpy/w6C4aa56A7Yov1FMCRVWa4LzjFVVigAdRQMaRJLnAAzfAg2/HwS4IWI0mOwJyJrcndZEvMyfLXbA0cimvtgnhQAkCy6BXvn/+E67GKDFUhg5uF1OL74i8ecOfSPgPHFXy0pc+RXBEexo9ClPdw8PAYvAuyl8jU2D1yQ2+Pt4WOwEmCS4P72cHm8PXQngHsHAMsYHIqUdJH0wV6A/aEDgOPg8RGPTiNwVVWc6oKlJjxxxJNOAHcO8WYYg78mGdkpGucd4h2P6yD++tRyfUy7PpdeH8SvnzxcccUf3+6ldSruXSMAAAAASUVORK5CYII=') 50% 50% no-repeat;
 		height: 40px;
 		max-width: 240px;
+		@include respond-to($query: retina, $val: '1.5') {
+			background-image: url('../img/fieldstrategies-logo-horizontal@2x.png');
+			background-size: 40px 240px;
+		}
 	}
 
 	@include prefix(transition, 'top 500ms ease');
