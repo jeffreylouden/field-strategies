@@ -539,12 +539,11 @@ article {
 			.team-image {
 				position: relative;
 				margin: 0 auto 40px;
-				width: 160px;
-				height: 160px;
 				overflow: hidden;
 				img {
 					border-radius: 50%;
 					display: block;
+					margin: 0 auto;
 				}
 			}
 			.info {

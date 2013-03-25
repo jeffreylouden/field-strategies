@@ -122,7 +122,7 @@
                     $(nav.find('[href=#' + currentSection + ']').closest('li')).addClass(ACTIVE);
 
                 } else {
-                    if ( scrollPosition <= parseInt(header.attr(OFFSETBOTTOM) -56, 10) ) {
+                    if ( scrollPosition < parseInt(header.attr(OFFSETBOTTOM) - 56, 10) ) {
                         nav.find('.active').removeClass(ACTIVE);
                         navLogo.removeClass(SHOW);
                         currentSection = '';
