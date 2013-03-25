@@ -10,8 +10,8 @@ $body: "jaf-facitweb", Helvetica, sans-serif;
 $museo: "museo-slab", Georgia, serif;
 
 $background: #ddd;
-$body-color: #000;
-$body-color-light: adjust-color($body-color, $lightness: 50%);
+$body-color: #282828;
+$body-color-light: adjust-color($body-color, $lightness: 30%);
 $blue: #021e4d;
 
 @include columns($selector:'.content, nav ul, #intro, #colophon', $count:'container');
@@ -71,10 +71,21 @@ h3 {
 	}
 }
 
+h2,
+h4,
+h5 {
+	color: $blue;
+}
+
+#meet-the-team,
+#client-list {
+	h5 {
+		color: $body-color-light;
+	}
+}
+
 li {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	@include prefix(box-sizing, 'border-box');
 }
 
 #hd {
@@ -290,16 +301,15 @@ article {
 		position: relative;
 		text-align: center;
 		padding-bottom: 4%;
-		margin-bottom: 4%;
 		@include respond-to($val: $desktopBreakpoint) {
-			padding-bottom: 40px;
+			padding-bottom: 80px;
 			text-align: left;
 			&:after {
 				position: absolute;
 				content: '';
 				left:0;
 				bottom: 35%;
-				height: 5px;
+				height: 7px;
 				width: 60px;
 				display: block;
 				background: $body-color;
@@ -377,6 +387,7 @@ article {
 		font-style: italic;
 		font-size: 1.3rem;
 		line-height: 1.6;
+		font-family: $museo;
 		p {
 			padding-bottom: 40px;
 			position: relative;
@@ -389,7 +400,7 @@ article {
 				height: 5px;
 				width: 60px;
 				display: block;
-				background: $body-color;
+				background: $blue;
 			}
 		}
 
@@ -398,12 +409,12 @@ article {
 			margin: 0 auto;
 		}
 		cite {
+			color: $blue;
 			font-style: normal;
+			font-family: $body;
 			display: block;
 			margin: 4% 0;
 			font-size: 1.4rem;
-			font-family: $museo;
-			font-weight: 800;
 		}
 	}
 
@@ -602,13 +613,21 @@ article {
 				overflow: hidden;
 				padding: 0 0 0 2%;
 				margin-bottom: 4%;
-				min-height: 300px;
+				min-height: 200px;
 				border-bottom: none;
+
+				.info {
+					float: left;
+					width: 66.666666667%;
+					padding-right: 2%;
+					@include prefix(box-sizing, 'border-box');
+				}
 				img {
 					float: right;
+					width: 33.333333333%;
 					max-width: 300px;
 					height: auto;
-					margin: 0 0 0 2%;
+					margin: 0;
 				}
 				h4,
 				h5 {
@@ -616,8 +635,11 @@ article {
 				}
 				h4 {
 					font-size: 1.3rem;
+					position: relative;
 					time {
-						float: right;
+						position: absolute;
+						top: 0;
+						right: 0;
 					}
 				}
 			}
@@ -696,7 +718,7 @@ article {
 			}
 		}
 		h5 {
-			font-size: 1.4rem;
+			font-size: 1.2rem;
 			font-weight: bold;
 			line-height: 1.6;
 			text-align: center;
@@ -744,37 +766,49 @@ article {
 		}
 		#state-orgs,
 		#ground-game {
-			ul {
-				width: 50%;
-			}
 			h5 {
 				clear: both;
-				width: 50%;
 				box-sizing: border-box;
 				margin-bottom: 0;
+				@include prefix(box-sizing, 'border-box');
 			}
 		}
 
 		#state-orgs {
 			ul {
 				float: right;
+				width: 50%;
 			}
 			h5 {
 				float: left;
+				padding-right: 2%;
+				width: 50%;
 			}
 		}
 		#ground-game {
 			ul {
 				float: left;
+				width: 33.333333333%;
 			}
 			h5 {
 				float: right;
+				padding-left: 2%;
+				width: 66.666666667%;
 			}
 		}
 	}
 }
 
 footer {
+	background: $blue;
+	color: white;
+	a {
+		color: white;
+		&:hover {
+			color: white;
+			text-decoration: underline;
+		}
+	}
 	#colophon {
 		overflow: hidden;
 		padding: 4%;
@@ -795,7 +829,7 @@ footer {
 		}
 		h3 {
 			font-size: 1.6rem;
-			border-bottom: 2px solid $body-color;
+			border-bottom: 2px solid white;
 			margin-bottom: 4%;
 		}
 	}
@@ -816,12 +850,20 @@ footer {
 		}
 	}
 
+	#credits {
+		background: white;
+		color: $body-color;
+		a {
+			color: $blue;
+		}
+	}
+
 	#legal {
 		padding: 20px;
 		font-size: 0.7rem;
 		text-align: center;
 		position: relative;
-		border-top: 1px solid $body-color;
+		border-top: 1px solid white;
 		i {
 			display: block;
 		}

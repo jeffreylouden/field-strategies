@@ -46,7 +46,7 @@
 
         currentSlide    =   testimonials.find('.current');
         currentIndex    =   currentSlide.index();
-        
+
         if ( direction === PREV ) {
             currentSlide.removeClass(PAST).removeClass(CURRENT);
             if ( currentIndex > 0 ) {
@@ -155,7 +155,7 @@
         e.preventDefault();
         scrollToSection();
         if (nav.hasClass(SHOW)) {
-            nav.removeClass(SHOW);   
+            nav.removeClass(SHOW);
         }
     });
 
@@ -163,7 +163,7 @@
         e.preventDefault();
         scrollToSection();
         if (nav.hasClass(SHOW)) {
-            nav.removeClass(SHOW);   
+            nav.removeClass(SHOW);
         }
     });
 
@@ -171,7 +171,7 @@
         e.preventDefault();
         scrollToSection($(this).attr('href'));
         if (nav.hasClass(SHOW)) {
-            nav.removeClass(SHOW);   
+            nav.removeClass(SHOW);
         }
     });
 
@@ -189,7 +189,7 @@
         scrollDistance  =   scrollDistance ? scrollDistance : 0;
 
         sectionHighlight(scrollDistance);
-    })
+    });
 
     init();
 
