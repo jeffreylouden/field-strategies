@@ -107,6 +107,11 @@
                 }
             if ( contact.attr(OFFSETTOP) <= viewportHeight ) {
                 currentSection = 'contact';
+
+                if (!navLogo.hasClass(SHOW)) {
+                    navLogo.addClass(SHOW);
+                }
+                
                 nav.find('.active').removeClass(ACTIVE);
                 $(nav.find('[href=#contact]').closest('li')).addClass(ACTIVE);
             } else {
