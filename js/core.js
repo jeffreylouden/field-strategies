@@ -87,7 +87,7 @@
                 s                       =   $(target),
                 targetURL               =   win.location.origin + '/' + target,
                 elementDistanceFromTop  =   s.offset().top;
-            htmlbody.animate({scrollTop: elementDistanceFromTop - 56}, 600);
+            htmlbody.animate({scrollTop: elementDistanceFromTop - 52}, 600);
         }
     }
 

@@ -85,11 +85,9 @@ h5 {
 	color: $blue;
 }
 
-#meet-the-team,
-#client-list {
-	h5 {
-		color: $body-color-light;
-	}
+#meet-the-team h5,
+#client-list h6 {
+	color: $body-color-light;
 }
 
 li {
@@ -697,6 +695,9 @@ article {
 
 	#client-list {
 		text-align: center;
+		ul {
+			overflow: hidden;
+		}
 		li,
 		.full {
 			margin-bottom: 8%;
@@ -705,14 +706,22 @@ article {
 			margin: 2% auto 4%;
 		}
 		h4 {
+			margin-top: 4%;
 			text-transform: uppercase;
 			font-weight: bold;
+			clear: both;
+			&:first-child {
+				margin-top: 0;
+			}
 		}
+
 		h5 {
 			font-family: $museo;
 			font-weight: 800;
+			font-size: 0.9rem;
+		}
+		h6 {
 			font-size: 0.8rem;
-			font-style: italic;
 			margin: 2% 0;
 		}
 	}
@@ -759,28 +768,26 @@ article {
 			padding: 0;
 			margin-bottom: 0;
 
-			.full {
-				margin: 0 0 4% 0;
-				padding: 4%;
-				background: white;
-				clear: both;
-				h4 {
-					font-family: $museo;
-					font-size: 1.2rem;
-					font-weight: bold;
-					line-height: 1.6;
-				}
+			h4 {
+				font-size: 1.6rem;
+				line-height: 2;
+				text-align: left;
+				margin-bottom: 4%;
+				color: white;
+				text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
 			}
 
 			li {
 				float: left;
-				width: 30.666666667%;
+				width: 22%;
 				margin: 0 4% 4% 0;
 				padding: 4%;
 				background: white;
-				min-height: 360px;
-				&:nth-child(3n) {
+				&:nth-child(4n) {
 					margin-right: 0;
+				}
+				&:nth-child(5n) {
+					clear: left;
 				}
 			}
 		}
