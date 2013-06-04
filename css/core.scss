@@ -134,7 +134,6 @@ h1 {
 	}
 	@include respond-to($query: retina, $val: '1.5') {
 	    background-image: url('../img/fieldstrategies-logo@2x.png');
-	    background-size: 400px 289px;
 	}
 }
 
