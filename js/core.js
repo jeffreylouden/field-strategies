@@ -7,6 +7,7 @@
         ACTIVE          =   'active',
         CURRENT         =   'current',
         ID              =   'id',
+        IMG             =   'img',
         NEXT            =   'next',
         OFFSETBOTTOM    =   'data-offset-bottom',
         OFFSETTOP       =   'data-offset-top',
@@ -158,6 +159,8 @@
     function init() {
         cycle();
         quotes.eq(0).addClass(CURRENT);
+
+        $(IMG).unveil(100);
 
         setSections();
     }
