@@ -1,8 +1,8 @@
 auto:           true
-url:        	"http://www.field-strategies.com/"
+url:        	"http://www.fieldstrategies.com/"
 exclude:        ["README.md", "CNAME"]
 owner-name:     "Field Strategies"
-owner-page:     "http://fieldstrategies.com/"
+owner-page:     "http://www.fieldstrategies.com/"
 owner-email:    "hello@fieldstrategies.com"
 name:           "Field Strategies"
 license:        "Creative Commons Attribution-Share Alike 3.0 United States License."
