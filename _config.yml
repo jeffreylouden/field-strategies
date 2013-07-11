@@ -1,6 +1,5 @@
 auto:           true
-url:        	"http://assets.jefflouden.com/field-strategies/"
-permalink:      ":title/"
+url:        	"http://www.field-strategies.com/"
 exclude:        ["README.md", "CNAME"]
 owner-name:     "Field Strategies"
 owner-page:     "http://fieldstrategies.com/"
